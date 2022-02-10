@@ -1,0 +1,35 @@
+---
+layout: post
+title: test
+---
+
+
+
+
+强化学习的主要思想是基于agent和environment的交互学习，其中agent通过action影响environment，environment返回reward和state，整个交互过程是一个马尔可夫决策过程。
+<center> $ L = -E(\sum_t {r_tlogp(s_t, a_t)}) $ </center>
+
+
+```python
+import parl
+from parl.algorithms import DQN, DDQN
+
+class AtariModel(parl.Model):
+	def __init__(self, img_shape, action_dim):
+		self.cnn1 = layers.conv_2d(num_filters=32, filter_sie=5, 
+								 stride=[1, 1], padding=[2, 2], act='relu')
+	def value(self, img):
+		img = img / 255.0
+		l = self.cnn1(img)
+		Q = self.fcl(l)
+		return Q
+```
+
+
+so $ i={\sqrt[{n}]{\left({\frac {FV}{PV}}\right)}}-1 $ inline display?
+
+
+
+
+
+
