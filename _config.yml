@@ -27,7 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  chongliujia
 
 # Build settings
 
@@ -43,8 +43,8 @@ texture:
     - title: about
       url: "/about"
 
-social_links:
-  github: https://github.com/chongliujia
+  social_links:
+    github: chongliujia
 
 show_excerpts: true
 
