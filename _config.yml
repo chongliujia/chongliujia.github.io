@@ -31,6 +31,7 @@ github_username:  jekyll
 
 # Build settings
 
+permalink: /posts/:title/
 texture:
   title: Chongliu Jia
   tagline: Developer
@@ -38,12 +39,24 @@ texture:
   style: black
   showNav: true
   showPicker: false
+  navigation:
+    - title: about
+      url: "/about"
+
+social_links:
+  github: https://github.com/chongliujia
+
+show_excerpts: true
 
 sass:
   sass_dir: _sass
 
 plugins:
   - jekyll-seo-tag
+
+header_pages:
+  - about.md
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
