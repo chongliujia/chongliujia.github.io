@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
+title: ChongliuJia's blog
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -37,8 +37,8 @@ texture:
   tagline: Developer
   date_format: "%b %-d, %Y"
   style: black
-  showNav: false
-  showPicker: true
+  showNav: true
+  showPicker: false
 
 sass:
   sass_dir: _sass
