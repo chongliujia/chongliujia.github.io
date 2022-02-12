@@ -8,7 +8,7 @@ title: test
 
 强化学习的主要思想是基于agent和environment的交互学习，其中agent通过action影响environment，environment返回reward和state，整个交互过程是一个马尔可夫决策过程。
 <center> $ L = -E(\sum_t {r_tlogp(s_t, a_t)}) $ </center>
-![截屏2022-02-13 00.05.23] (pictures/截屏2022-02-13 00.05.23.png)
+![截屏2022-02-13 00.05.23] (https://github.com/chongliujia/chongliujia.github.io/blob/main/pictures/%E6%88%AA%E5%B1%8F2022-02-13%2000.05.23.png)
 
 
 ```python
