@@ -1,0 +1,11 @@
+baseURL: https://chongliujia.github.io
+languageCode: en-us
+title: Chongliu's blog
+description: The blog is my learning notes
+theme: PaperMod
+
+enableInlineShortcodes: true 
+enableEmoji: true 
+enableRobotsTXT: true 
+
+paginate: 15
