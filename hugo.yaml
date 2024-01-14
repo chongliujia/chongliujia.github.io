@@ -9,3 +9,19 @@ enableEmoji: true
 enableRobotsTXT: true 
 
 paginate: 15
+
+menu:
+  main:
+    - identifier: home
+      name: 🏠Home
+      url: /
+      weight: 4
+    - identifier: posts
+      name: 📃Posts
+      url: posts
+      weight: 5
+    - identifier: about
+      name: 👨About
+      url: about
+      weight: 10
+
