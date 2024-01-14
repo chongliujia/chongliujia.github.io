@@ -1,7 +1,7 @@
 baseURL: https://chongliujia.github.io
 languageCode: en-us
 title: Chongliu's blog
-description: The blog is my learning notes
+subtitle: The blog is my learning notes
 theme: PaperMod
 
 enableInlineShortcodes: true 
