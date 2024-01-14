@@ -1,4 +1,15 @@
 baseURL = 'https://chongliujia.github.io'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "Chongliu's blog"
+description = "The blog is my learning notes"
 theme = 'PaperMod'
+
+tags = [
+  "blog",
+  "search",
+]
+
+features = [
+  "blog",
+  "search",
+]
