@@ -1,5 +1,5 @@
 +++
-title = 'EBPF 笔记 1'
+title = 'eBPF-notes-1'
 date = 2024-01-15T22:50:51-06:00
 draft = false
 +++
