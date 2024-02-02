@@ -1,7 +1,6 @@
 +++
 title = 'Reinforcement Learning -- Multi-Armed Bandits'
 date = 2024-02-01T23:06:48-06:00
-author = Chongliu Jia
 draft = false
 math = true
 +++
