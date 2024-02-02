@@ -97,12 +97,13 @@ $Q(a) \leftarrow 0$
 $N(a) \leftarrow 0$
 
 Loop forever: 
-
+{{<keepit>}}
 $$
 \begin{aligned}
 A &\leftarrow \begin{cases} argmax_a Q(a) & \text{with probability 1 - }\varepsilon   
   \\\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\\ R &\leftarrow bandit(A) \\\ N(A) &\leftarrow N(A) + 1 \\\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)] \end{aligned}
 $$
+{{</keepit>}}
 
 # Tracking a Nonstationary Problem
 
@@ -241,9 +242,13 @@ Recall that our plan has been to write the performance gradient as an expectatio
 
 Substituting a sample of the expectation above for the performance gradient:
 
+{{<keepit>}}
+
 $$
 H_{t+1}(a) = H_t(a) + \alpha(R_t - \bar{R_t}) (\mathbb1_{a=A_t} - \pi_t(a)), \text{ for all }a,  
 $$
+
+{{</keepit>}}
 
 Since,
 
