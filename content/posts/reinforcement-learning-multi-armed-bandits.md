@@ -1,6 +1,7 @@
 +++
 title = 'Reinforcement Learning -- Multi-Armed Bandits'
 date = 2024-02-01T23:06:48-06:00
+author = Chongliu Jia
 draft = false
 math = true
 +++
@@ -275,3 +276,19 @@ Tips: $\frac {\partial e^x} {\partial x} = e ^x$
 We have just shown that the expected update of the gradient bandit algorithm is equal to the gradient of expected reward, and thus that the algorithm is an instance of stochastic gradient ascent. This assures us that the algorithm has robust convergence properties.
 
 Note that we did not require any properties of the reward baseline other than that it does not depend on the selected action.
+
+## Summary
+
+
+The $\varepsilon$-greedy methods choose randomly a small fraction of the time, whereas UCB methods choose deterministically but achieve exploration by subtly favoring at each step the actions that have so far received fewer samples.
+
+Gradient bandit algorithms estimate not action values, but action preferences, and favor the more preferred actions in a graded, probabilistic manner using a **soft-max distribution.** The simple expedient of initializing estimates optimistically causes even greedy methods to explore significantly.
+
+$\text{Gittins Index}$ (An instance of $Bayesian$ methods)
+
+The method to balancing exploration and exploitation in $k$-armed bandit problems is to compute a special kind of action value. In certain important special cases, this computation is tractable and leads directly to optimal solutions, although it does require complete knowledge of the prior distribution of possible problems, which we generally assume is not available.
+
+The approach assume a known initial distribution over the action values and then update the distribution exactly after each step (assuming that the true action values are stationary). In general, the update computations can be very complex, but for certain special distributions ($\text {conjugate priors}$). One possibility is to then select actions at each step according to their posterior probability of being the best action ($\text{posterior sampling}$ or $\text{Thompson sampling}$). They often performs similarly to the best of the distribution-free methods.
+
+## References
+1. Sutton, R. S., & Barto, A. G. (2018). Reinforcement learning: An introduction (2nd ed.).
