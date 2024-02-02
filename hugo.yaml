@@ -9,7 +9,7 @@ enableEmoji: true
 enableRobotsTXT: true 
 
 paginate: 15
-
+math: true
 menu:
   main:
     - identifier: home
