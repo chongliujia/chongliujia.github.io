@@ -4,5 +4,11 @@ layout: about
 date: 2024-1-13T21:46:33
 draft: false
 ---
+Hi 👋
 
-My name is Chongliu Jia
+My name is Chongliu Jia. I am a first-year PhD student in Computer Engineering at Iowa State University. My research interests include Ransomware Detection, Reinforcement Learning and Data Storage System.
+
+
+I enjoy photography, gaming, hiking, and of course, programming in my spare time. 
+
+My email is chongliujia@gmail.com. If you have any questions, feel free to contact me! 
