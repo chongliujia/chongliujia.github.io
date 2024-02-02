@@ -230,7 +230,7 @@ $$
 \begin{aligned} &= \mathbb E[(q_*(A_t) - B_t) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}] \\\ &= \mathbb E[(R_t - \bar{R_t}) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}],\end{aligned}
 $$
 
-where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ for {{<keepit>}}$q_*(A_t)${{</keepit>}}, which is permitted because {{<keepit>}} $\mathbb{E[{R_t} | {A_t}]} = q_/*(A_t)$ {{</keepit>}}. Shortly we will establish that {{<keepit>}}$\frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} = \pi_t(x) (\mathbb1_{a=x} - \pi_t(a))$ {{</keepit>}}, where {{<keepit>}}$\mathbb1_{a=x}$ {{</keepit>}} is defined to be $1$ if $a = x$, else {{<keepit>}}$0${{</keepit>}}. 
+where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ for {{<keepit>}}$q_*(A_t)${{</keepit>}}, which is permitted because {{<keepit>}} $\mathbb{E[{R_t} | {A_t}]} = q_*(A_t)$ {{</keepit>}}. Shortly we will establish that {{<keepit>}}$\frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} = \pi_t(x) (\mathbb1_{a=x} - \pi_t(a))$ {{</keepit>}}, where {{<keepit>}}$\mathbb1_{a=x}$ {{</keepit>}} is defined to be $1$ if $a = x$, else {{<keepit>}}$0${{</keepit>}}. 
 
 Assuming that for now, we have,
 
