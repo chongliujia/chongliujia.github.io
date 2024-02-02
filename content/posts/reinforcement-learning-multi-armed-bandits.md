@@ -100,7 +100,7 @@ Loop forever:
 
 $$
 \begin{aligned}
-A &\leftarrow \begin{cases} argmax\_{a} Q(a) & \text{with probability 1 - }\varepsilon   
+A &\leftarrow \begin{cases} argmax_a Q(a) & \text{with probability 1 - }\varepsilon   
   \\\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\\ R &\leftarrow bandit(A) \\\ N(A) &\leftarrow N(A) + 1 \\\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)] \end{aligned}
 $$
 
@@ -229,7 +229,7 @@ $$
 \begin{aligned} &= \mathbb E[(q_*(A_t) - B_t) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}] \\\ &= \mathbb E[(R_t - \bar{R_t}) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}],\end{aligned}
 $$
 
-where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ for $q_*(A_t)$, which is permitted because $\mathbb {E[{R_t} | {A_t}]} = q_*(A_t)$. Shortly we will establish that $\frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} = \pi_t(x) (\mathbb 1_{a=x} - \pi_t(a))$, where $\mathbb 1_{a=x}$ is defined to be $1$ if $a = x$, else $0$. 
+where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ for $q_/*(A_t)$, which is permitted because $\mathbb{E[{R_t} | {A_t}]} = q_/*(A_t)$. Shortly we will establish that $\frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} = \pi_t(x) (\mathbb1_{a=x} - \pi_t(a))$, where $\mathbb1_{a=x}$ is defined to be $1$ if $a = x$, else $0$. 
 
 Assuming that for now, we have,
 
@@ -242,7 +242,7 @@ Recall that our plan has been to write the performance gradient as an expectatio
 Substituting a sample of the expectation above for the performance gradient:
 
 $$
-H_{t+1}(a) = H_t(a) + \alpha(R_t - \bar{R_t}) (\mathbb 1\_{a=A_t} - \pi_t(a)), \text{ for all }a,  
+H_{t+1}(a) = H_t(a) + \alpha(R_t - \bar{R_t}) (\mathbb1_{a=A_t} - \pi_t(a)), \text{ for all }a,  
 $$
 
 Since,
