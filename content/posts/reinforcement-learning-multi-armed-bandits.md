@@ -1,11 +1,10 @@
 +++
-title = 'Reinforcement Learning Multi Armed Bandits'
+title = 'Reinforcement Learning -- Multi-Armed Bandits'
 date = 2024-02-01T23:06:48-06:00
 draft = false
 math = true
 +++
 
-# Reinforcement Learning — Multi-armed Bandits
 
 # A k-armed Bandit Problem
 
@@ -35,7 +34,7 @@ Answer: we begin by looking more closely at methods for estimating the values of
 
 Recall that the true value of an action is the mean reward when that action is selected. One natural way to estimate this is by averaging the rewards actually received:
 
-$Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} = \frac {\sum_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum_{i=1} ^{t-1} \mathbb {1}_{A_i = a}}$ 
+$$Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} = \frac {\sum_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum_{i=1} ^{t-1} \mathbb {1}_{A_i = a}}$$
 
 Where $1_{predicate}$ denotes the random variable that is 1 if predicate is true and 0 if it is not.
 
@@ -72,7 +71,7 @@ The implementation would be to maintain a record of all the rewards and then per
 Given $Q_n$ and the $n$ th reward, $R_n$, the new average of all $n$ rewards can be computed by:
 
 $$
-\begin{aligned}Q_{n + 1} &= \frac {1} {n} \sum_{i = 1} ^{n} R_i \\ &= \frac {1} {n} (R_n + \sum_{i = 1} ^{n - 1} R_i) \\ &= \frac {1} {n} (R_n + (n - 1) \frac {1} {n-1} \sum_{i = 1} ^{n - 1} R_i) \\ &= \frac {1} {n} (R_n + (n-1)Q_n) \\ &= \frac {1} {n} (R_n + nQ_n - Q_n) \\ &= Q_n + \frac {1} {n}[R_n - Q_n]\end{aligned}
+\begin{aligned}Q_{n + 1} &= \frac {1} {n} \sum_{i = 1} ^{n} R_i \\\ &= \frac {1} {n} (R_n + \sum_{i = 1} ^{n - 1} R_i) \\\ &= \frac {1} {n} (R_n + (n - 1) \frac {1} {n-1} \sum_{i = 1} ^{n - 1} R_i) \\\ &= \frac {1} {n} (R_n + (n-1)Q_n) \\\ &= \frac {1} {n} (R_n + nQ_n - Q_n) \\\ &= Q_n + \frac {1} {n}[R_n - Q_n]\end{aligned}
 $$
 
 Which holds even for $n = 1$, obtaining $Q_2 = R_1$ for arbitrary $Q_1$ . 
@@ -99,7 +98,7 @@ Loop forever:
 
 $$
 \begin{aligned} A &\leftarrow \begin{cases} argmax_{a} Q(a) & \text{with probability 1 - }\varepsilon   
-  \\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\ R &\leftarrow bandit(A) \\ N(A) &\leftarrow N(A) + 1 \\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)]\end {aligned}
+  \\\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\\ R &\leftarrow bandit(A) \\\ N(A) &\leftarrow N(A) + 1 \\\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)]\end {aligned}
 $$
 
 # Tracking a Nonstationary Problem
@@ -115,7 +114,7 @@ $$
 Where the step-size parameter $\alpha \in (0, 1]$ is constant. This result in $Q_{n + 1}$  being a weighted average of past rewards and the initial estimate $Q_1$: 
 
 $$
-\begin{aligned} Q_{n + 1} &= Q_n + \alpha [R_n - Q_n] \\ &= \alpha R_n + (1 - \alpha)Q_n \\ &= \alpha R_n + (1 - \alpha)[\alpha R_{n - 1} + (1 - \alpha)Q_{n- 1}] \\ &= \alpha R_n + (1 - \alpha) \alpha R_{n - 1} + (1 - \alpha)^2Q_{n - 1} \\ &= \alpha R_n + (1 - \alpha) \alpha R_{n - 1} + (1 - \alpha)^2 \alpha R_{n - 2} + ... + (1 - \alpha)^{n - 1} \alpha R_1 + (1 - \alpha)^n Q_1 \\ &= (1- \alpha)^n Q_1 + \sum_{i = 1}^n\alpha (1 - \alpha)^{n - i} R_i\end{aligned}
+\begin{aligned} Q_{n + 1} &= Q_n + \alpha [R_n - Q_n] \\\ &= \alpha R_n + (1 - \alpha)Q_n \\\ &= \alpha R_n + (1 - \alpha)[\alpha R_{n - 1} + (1 - \alpha)Q_{n- 1}] \\\ &= \alpha R_n + (1 - \alpha) \alpha R_{n - 1} + (1 - \alpha)^2Q_{n - 1} \\\ &= \alpha R_n + (1 - \alpha) \alpha R_{n - 1} + (1 - \alpha)^2 \alpha R_{n - 2} + ... + (1 - \alpha)^{n - 1} \alpha R_1 + (1 - \alpha)^n Q_1 \\\ &= (1- \alpha)^n Q_1 + \sum_{i = 1}^n\alpha (1 - \alpha)^{n - i} R_i\end{aligned}
 $$
 
 We call this a weighted average because the sum of the weights is $(1 - \alpha)^n + \sum_{i = 1} ^n \alpha (1 - \alpha) ^{n - i} = 1$, as you can check for yourself.
@@ -179,7 +178,7 @@ We gave introduced a useful new notation, $\pi_t(a)$, for the probability of tak
 There is a natural learning algorithm for this setting based on the idea of stochastic gradient ascent. On each step, after selecting action $A_t$ and receiving the reward $R_t$ , the action preferences are updated by:
 
 $$
-\begin{aligned} H_{t+1}(A_t) &\doteq H_t(A_t) + \alpha (R_t - \bar{R_t}) (1 - \pi_t(A_t)), and \\ H_{t+1}(a) &\doteq H_t(a) - \alpha(R_t-\bar{R_t})\pi_t(a)), \text{for all } a \neq A_t,\end{aligned}
+\begin{aligned} H_{t+1}(A_t) &\doteq H_t(A_t) + \alpha (R_t - \bar{R_t}) (1 - \pi_t(A_t)), and \\\ H_{t+1}(a) &\doteq H_t(a) - \alpha(R_t-\bar{R_t})\pi_t(a)), \text{for all } a \neq A_t,\end{aligned}
 $$
 
 Where $\alpha > 0$  is a step-siez paramter, and $\bar{R_t} \in \mathbb{R}$ is the average of all the rewards up through and including time $t$. The $\bar{R_t}$ term serves as a baseline with which the reward is compared.
@@ -205,7 +204,7 @@ and the measure of the increment’s effect is the partial derivative of this pe
 First, we take a closer look at the exact performance gradient:
 
 $$
-\begin{aligned} \frac {\partial {\mathbb E[R_t]}} {\partial {H_t(a)}} &= \frac {\partial} {\partial H_t(a)} [\sum_x \pi_t(x)q_*(x)] \\ &= \sum_x q_*(x) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} \\ &= \sum_x (q_*(x) - B_t) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}},\end{aligned}
+\begin{aligned} \frac {\partial {\mathbb E[R_t]}} {\partial {H_t(a)}} &= \frac {\partial} {\partial H_t(a)} [\sum_x \pi_t(x)q_*(x)] \\\ &= \sum_x q_*(x) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} \\\ &= \sum_x (q_*(x) - B_t) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}},\end{aligned}
 $$
 
 where $B_t$, called the baseline, can be any scalar that does not depend on $x$. 
@@ -223,7 +222,7 @@ The equation is now in the form of an expectation, summing over all possible val
 Thus:
 
 $$
-\begin{aligned} &= \mathbb E[(q_*(A_t) - B_t) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}] \\ &= \mathbb E[(R_t - \bar{R_t}) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}],\end{aligned}
+\begin{aligned} &= \mathbb E[(q_*(A_t) - B_t) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}] \\\ &= \mathbb E[(R_t - \bar{R_t}) \frac {\partial {\pi_t(A_t)}} {\partial {H_t(a)}} \cdot \frac {1} {\pi_t(A_t)}],\end{aligned}
 $$
 
 where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ for $q_*(A_t)$, which is permitted because $\mathbb {E[{R_t} | {A_t}]} = q_*(A_t)$. Shortly we will establish that $\frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} = \pi_t(x) (\mathbb 1_{a=x} - \pi_t(a))$, where $\mathbb 1_{a=x}$ is defined to be $1$ if $a = x$, else $0$. 
@@ -231,7 +230,7 @@ where here we have chosen the baseline $B_t = \bar{R_t}$ and substituted $R_t$ f
 Assuming that for now, we have,
 
 $$
-\begin{aligned} &= \mathbb E[(R_t - \bar{R_t})\pi_t(A_t)(\mathbb1_{a=A_t} - \pi_t(a)) \cdot \frac {1} {\pi_t(A_t)}] \\ &= \mathbb E[(R_t - \bar{R_t})(\mathbb 1_{a=A_t} - \pi_t(a))]. \end{aligned}
+\begin{aligned} &= \mathbb E[(R_t - \bar{R_t})\pi_t(A_t)(\mathbb1_{a=A_t} - \pi_t(a)) \cdot \frac {1} {\pi_t(A_t)}] \\\ &= \mathbb E[(R_t - \bar{R_t})(\mathbb 1_{a=A_t} - \pi_t(a))]. \end{aligned}
 $$
 
 Recall that our plan has been to write the performance gradient as an expectation of something that we can sample on each step, as we have just done, and then update on each step proportional to the sample. 
@@ -259,7 +258,7 @@ $$
 Using this, we can write
 
 $$
-\begin{aligned} \frac {\partial \pi_t(x)} {\partial H_t(a)} &= \frac {\partial} {\partial H_t(a)} \pi_t(x) \\ &= \frac {\partial} {\partial H_t(a)} [\frac {e^{H_t(x)}} {\sum_{y=1} ^k e^{H_t(y)}}] \\ &= \frac {\frac {\partial e^{H_t(x)}} {\partial H_t(a)}\sum_{y=1}^k e^{H_t(y)} - e^{H_t(x)} \frac {\partial \sum_{y=1} ^k e^{H_t(y)}} {\partial H_t(a)}} {(\sum_{y=1} ^k e^{H_t(y)})^2} \\ &= \frac {\mathbb1_{a=x}e^{H_t(x)}} {\sum_{y=1} ^k e^{H_t(y)}} - \frac {e^{H_t(x)}e^{H_t(a)}} {(\sum_{y=1} ^k e^{H_t(y)})^2} \\ &= \mathbb1_{a=x} \pi_t(x) - \pi_t(x)\pi_t(a) \\ &= \pi_t(x)(\mathbb1_{a=x} - \pi_t(a)).\end{aligned}
+\begin{aligned} \frac {\partial \pi_t(x)} {\partial H_t(a)} &= \frac {\partial} {\partial H_t(a)} \pi_t(x) \\\ &= \frac {\partial} {\partial H_t(a)} [\frac {e^{H_t(x)}} {\sum_{y=1} ^k e^{H_t(y)}}] \\\ &= \frac {\frac {\partial e^{H_t(x)}} {\partial H_t(a)}\sum_{y=1}^k e^{H_t(y)} - e^{H_t(x)} \frac {\partial \sum_{y=1} ^k e^{H_t(y)}} {\partial H_t(a)}} {(\sum_{y=1} ^k e^{H_t(y)})^2} \\\ &= \frac {\mathbb1_{a=x}e^{H_t(x)}} {\sum_{y=1} ^k e^{H_t(y)}} - \frac {e^{H_t(x)}e^{H_t(a)}} {(\sum_{y=1} ^k e^{H_t(y)})^2} \\\ &= \mathbb1_{a=x} \pi_t(x) - \pi_t(x)\pi_t(a) \\\ &= \pi_t(x)(\mathbb1_{a=x} - \pi_t(a)).\end{aligned}
 $$
 
 Tips: $\frac {\partial e^x} {\partial x} = e ^x$
