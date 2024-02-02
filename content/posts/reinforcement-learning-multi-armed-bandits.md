@@ -242,7 +242,7 @@ Recall that our plan has been to write the performance gradient as an expectatio
 Substituting a sample of the expectation above for the performance gradient:
 
 $$
-H_{t+1}(a) = H_t(a) + \alpha(R_t - \bar{R_t}) (\mathbb 1_{a=A_t} - \pi_t(a)), \text{ for all }a,  
+H_{t+1}(a) = H_t(a) + \alpha(R_t - \bar{R_t}) (\mathbb 1\_{a=A_t} - \pi_t(a)), \text{ for all }a,  
 $$
 
 Since,
