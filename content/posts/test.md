@@ -5,7 +5,4 @@ draft = false
 math =  true
 +++
 
-x = \begin{cases}
-    a &\text{if } b \\\
-    c &\text{if } d 
-\end{cases}
+$$0.414213562373095048\approx6\*16^{-1}+a\*16^{-2}+0\*16^{-3}+\cdots$$
