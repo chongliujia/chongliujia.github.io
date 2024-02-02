@@ -35,7 +35,9 @@ Answer: we begin by looking more closely at methods for estimating the values of
 Recall that the true value of an action is the mean reward when that action is selected. One natural way to estimate this is by averaging the rewards actually received:
 
 $$
-Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} = \frac {\sum_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum_{i=1} ^{t-1} \mathbb {1}_{A_i = a}}
+/begin{aligned}
+Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} \= \frac {\sum\_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum\_{i=1} ^{t-1} \mathbb {1}\_{A_i = a}}
+/end{aligned}
 $$
 
 Where $1_{predicate}$ denotes the random variable that is 1 if predicate is true and 0 if it is not.
