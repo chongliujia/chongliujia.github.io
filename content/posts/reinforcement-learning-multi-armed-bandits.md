@@ -35,7 +35,7 @@ Answer: we begin by looking more closely at methods for estimating the values of
 Recall that the true value of an action is the mean reward when that action is selected. One natural way to estimate this is by averaging the rewards actually received:
 
 $$
-Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} \= \frac {\sum\_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum\_{i=1} ^{t-1} \mathbb {1}\_{A_i = a}}
+Q_t(a) \doteq \frac {\text{sum of rewards when a taken prior to t}} {\text{number of times a taken prior to t}} = \frac {\sum_{i=1} ^{t-1}R_i \cdot \mathbb {1}_{A_i=a} } {\sum_{i=1} ^{t-1} \mathbb {1}\_{A_i = a}}
 
 $$
 
@@ -100,8 +100,9 @@ $N(a) \leftarrow 0$
 Loop forever: 
 
 $$
-A &\leftarrow \begin{cases} argmax_{a} Q(a) & \text{with probability 1 - }\varepsilon   
-  \\\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\\ R &\leftarrow bandit(A) \\\ N(A) &\leftarrow N(A) + 1 \\\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)]
+\begin{aligned}
+A &\leftarrow \begin{cases} argmax\_{a} Q(a) & \text{with probability 1 - }\varepsilon   
+  \\\ \text{a random action } & \text{with probability } \varepsilon \end{cases} \\\ R &\leftarrow bandit(A) \\\ N(A) &\leftarrow N(A) + 1 \\\ Q(A) &\leftarrow Q(A) +  \frac {1} {N(A)} [R - Q(A)] \end{aligned}
 $$
 
 # Tracking a Nonstationary Problem
@@ -207,7 +208,7 @@ and the measure of the increment’s effect is the partial derivative of this pe
 First, we take a closer look at the exact performance gradient:
 
 $$
-\begin{aligned} \frac {\partial {\mathbb E[R_t]}} {\partial {H_t(a)}} &= \frac {\partial} {\partial H_t(a)} [\sum_x \pi_t(x)q_*(x)] \\\ &= \sum_x q_*(x) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} \\\ &= \sum_x (q_*(x) - B_t) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}}
+\begin{aligned} \frac {\partial {\mathbb E[R_t]}} {\partial {H_t(a)}} &= \frac {\partial} {\partial H_t(a)} [\sum_x \pi_t(x)q_\*(x)] \\\ &= \sum_x q_\*(x) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}} \\\ &= \sum_x (q_\*(x) - B_t) \frac {\partial {\pi_t(x)}} {\partial {H_t(a)}}
 \end{aligned}
 $$
 

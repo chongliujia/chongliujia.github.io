@@ -11,6 +11,8 @@ enableRobotsTXT: true
 paginate: 15
 
 math: true
+markup:
+  defaultMarkdownHandler: goldmark
 
 menu:
   main:
