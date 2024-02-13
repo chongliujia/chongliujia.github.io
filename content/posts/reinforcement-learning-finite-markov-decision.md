@@ -2,6 +2,7 @@
 title = 'Reinforcement Learning Finite Markov Decision'
 date = 2024-02-13T12:45:27-06:00
 draft = false
+math = true
 +++
 
 # Reinforcement Learning — Finite Markov Decision Processes (MDP)
