@@ -15,7 +15,7 @@ MDPs are a mathematically idealized form of the reinforcement learning problem f
 
 MDPs are meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner and decision maker is called the agent. The thing it interacts with, comprising everything outside the agent, is called the environment. The agent selecting actions and the environment responding to these actions and presenting new situations to the agent. The environment also gives rise to rewards, special numerical values that the agent seeks to maximize over time through its choice of actions.
 
-![1.png](./Reinforcement-Learning-Finite-Markov-Decision/1.png)
+![1.png](post/Reinforcement-Learning-Finite-Markov-Decision/1.png)
 
 The agent and environment interact at each of a sequence of discrete time steps, $t = 0, 1, 2, 3, ...$ . 
 
@@ -153,7 +153,7 @@ where it is implicit that the actions, $a$, are taken from the set $\mathcal A(s
 
 $\sum_{a} \pi(a|s) \sum_{s',r} p(s', r | s, a) [r + \gamma v_\pi(s')]$ is the Bellman equation for $v_\pi$. It expresses a relationship between the value of a state and the values of its successor states. 
 
-![2.png](./Reinforcement-Learning-Finite-Markov-Decision/2.png)
+![2.png](post/Reinforcement-Learning-Finite-Markov-Decision/2.png)
 
 Think of looking ahead from a state to its possible successor states, as suggested by the diagram to the right. Each open circle represents a state and each solid circle represents a state-action pair. Starting from state $s$, the root node at the top, the agent could take any of some set of actions — three are show in the diagram — based on its policy $\pi$. From each of these, the environment could respond with one of several next states, $s'$, along with a reward, $r$, depending on its dynamic given by the function $p$. The Bellman equation averages over all the possibilities, weighting each by its probability of occurring. It states that the value of the start state must equal the value of the expected next state, plus the reward expected along the way.
 
