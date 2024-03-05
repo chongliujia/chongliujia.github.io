@@ -7,7 +7,7 @@ math = true
 
 # Reinforcement Learning — Finite Markov Decision Processes (MDP)
 
-MDPs are a classical formalization of sequential decision making, where actions influence not just immediate rewards, but also subsequent situations, or states, and through those future rewards. Thus MDPs involve delayed reward and the need to tradeoff immediate and delayed reward. Whereas in bandit problems we estimated the value $q_*(a)$ of each action $a$, in MDPs we estimate the value $q_*(s, a)$ of each action $a$ in each state s, or we estimate the value $v_*(s)$ of each state given optimal action selections. These state-dependent quantities are essential to accurately assigning credit for long-term consequences to individual action selections.
+MDPs are a classical formalization of sequential decision making, where actions influence not just immediate rewards, but also subsequent situations, or states, and through those future rewards. Thus MDPs involve delayed reward and the need to tradeoff immediate and delayed reward. Whereas in bandit problems we estimated the value {{<keepit>}}$q_*(a)${{</keepit>}} of each action {{<keepit>}}$a${{</keepit>}}, in MDPs we estimate the value {{<keepit>}}$q_*(s, a)${{</keepit>}} of each action {{<keepit>}}$a${{</keepit>}} in each state s, or we estimate the value {{<keepit>}}$v_*(s)${{</keepit>}} of each state given optimal action selections. These state-dependent quantities are essential to accurately assigning credit for long-term consequences to individual action selections.
 
 MDPs are a mathematically idealized form of the reinforcement learning problem for which precise theoretical statements can be made. The key elements of the problem’s mathematical structure, such as returns, value functions, and Bellman equations.
 
@@ -32,16 +32,19 @@ $$
 In a $finite$ MDP, the sets of states, actions, and rewards ($\mathcal{S}, \mathcal{A}, and \    \mathcal{R}$) all have a finite number of elements.
 
 In this case, the random variables $R_t$ and $S_t$ have well defined discrete probability distributions dependent only on the preceding state and action. For particular values of those random variables, $s' \in \mathcal {S}$  and $r \in \mathcal {R}$, there is a probability of those values occurring at time $t$, given particular values of the preceding state and action:
-
+{{<keepit>}}
 $$
 p(s', r|s, a) \doteq Pr\{S_t = s', R_t = r | S_{t-1} = s, A_{t-1} = a \}
 $$
+{{</keepit>}}
 
 for all $s', s \in \mathcal{S}, r \in \mathcal{R}$, and $a \in \mathcal{A(s)}$. The function $p$ defines the $dynamics$ of the MDP. The dot over the equals sign in the equation reminds us that it is a definition (in this case of the function $p$) rather than a fact that follows from previous definitions. The dynamics function $p$: $\mathcal {S} \times \mathcal{R} \times \mathcal{S} \times \mathcal{A} \rightarrow [0, 1]$ is an ordinary deterministic function of four arguments. The ‘|’ in the middle of it comes from the notation for conditional probability, but here it just reminds us that $p$ specifies a probability distribution for each choice of $s$ and $a$, 
 
+{{<keepit>}}
 $$
 \sum_{s'\in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s', r|s, a) = 1, \text{ for all }s \in \mathcal {S}, a \in \mathcal {A(s)}
 $$
+{{</keepit>}}
 
 In a Markov decision process, the probabilities give by $p$ completely characterize the environment’s dynamics. The probability of each possible value for $S_t$ and $R_t$ depends only on the the immediately preceding state and action, $S_{t-1}$ and $A_{t - 1}$, and given them, not at all on earlier states and actions.
 
