@@ -15,7 +15,7 @@ MDPs are a mathematically idealized form of the reinforcement learning problem f
 
 MDPs are meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner and decision maker is called the agent. The thing it interacts with, comprising everything outside the agent, is called the environment. The agent selecting actions and the environment responding to these actions and presenting new situations to the agent. The environment also gives rise to rewards, special numerical values that the agent seeks to maximize over time through its choice of actions.
 
-![1.png](posts/Reinforcement-Learning-Finite-Markov-Decision/1.png)
+![1.png](content/posts/Reinforcement-Learning-Finite-Markov-Decision/1.png)
 
 The agent and environment interact at each of a sequence of discrete time steps, $t = 0, 1, 2, 3, ...$ . 
 
@@ -51,23 +51,23 @@ In a Markov decision process, the probabilities give by $p$ completely character
 This is best viewed a restriction not on the decision process, but on the $state$. The state must include information about all aspects of the past agent-environment interaction that make a difference for the future. If it does,  then the state is said to have the Markov property. 
 
 From the four-argument dynamics function $p$, one can compute anything else one might want to know about the environment, such as the $\text{state-transition probabilities}$ (which we denote, with a slight abuse of notation, as a three-argument function $p$: $\mathcal{S} \times \mathcal{S} \times \mathcal{A} \rightarrow [0, 1]$), 
-
+{{<keepit>}}
 $$
 p(s'|s, a) \doteq Pr\{ S_t = s' | S_{t-1} = s, A_{t - 1} = a\} = \sum_{r \in \mathcal{R}} p(s', r | s, a).
 $$
-
+{{</keepit>}}
 We can also compute the expected rewards for state-action pairs as a two-argument function $r$: $\mathcal {S} \times \mathcal {A} \rightarrow \mathbb{R}$: 
-
+{{<keepit>}}
 $$
 r(s, a) \doteq \mathbb E[R_t|S_{t-1} = s, A_{t-1} = a] = \sum_{r \in \mathcal {}R}  r \sum_{s'\in \mathcal{S}}p(s', r|s, a),
 $$
-
+{{</keepit>}}
 and the expected rewards for state-action-next-state triples as a three-argument function $r$: $\mathcal {S} \times \mathcal {A} \times \mathcal{S} \rightarrow \mathbb R$, 
-
+{{<keepit>}}
 $$
 r(s, a, s') \doteq \mathbb E[R_t | S_{t-1} = s, A_{t-1} = a, S_t=s'] = \sum_{r \in \mathcal {R}}r \frac {p(s', r|s, a)} {p(s'|s, a)}
 $$
-
+{{</keepit>}}
 The MDP framework is a considerable abstraction of the problem of goal-directed learning from interaction. It proposes that whatever the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior can be reduced to three signals passing back and forth between an agent and its environment: 
 
 One signal to represent the choices made by the agent (the actions);
@@ -101,11 +101,11 @@ However, in many cases the agent-environment interaction does not break naturall
 Discounting, this approach, is the agent tries to select actions so that the sum of the discounted rewards it receives over the future is maximized. In particular, it chooses $A_t$ to maximize the expected discounted return:
 
  
-
+{{<keepit>}}
 $$
 G_t \doteq R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k = 0} ^\infty \gamma^k R_{t+k+1} 
 $$
-
+{{</keepit>}}
 where $\gamma$ is a parameter, $0 \leq \gamma \leq 1$, called the discount rate.
 
 The discount rate determines the present value of future rewards: A reward received $k$ time steps in the future is worth only $\gamma^{k-1}$ times what it would be worth if it were received immediately. If $\gamma < 1$, the infinite sum in $\sum_{k=0} ^{\infty} \gamma^k R_{t+k+1}$ has a finite value as finite value as long as the reward sequence $\{R_k\}$ is bounded. If $\gamma = 0$, the agent is “myopic” in being concerned only with maximizing immediate rewards: its objective in this case is to learn how to choose $A_t$  so as to maximize only $R_{t+1}$. If each of the agent’s actions happened to influence only the immediate reward, not future rewards as well, then a myopic agent could maximize by separately maximizing each immediate reward.Acting to maximize immediate reward can reduce access to future rewards so that the return is reduced.  As $\gamma$ approaches 1, the return objective takes future rewards into account more strongly; the agent becomes more farsighted.
@@ -129,11 +129,11 @@ The notion of “how good” here is defined in terms of future rewards that can
 A policy is a mapping from states to probabilities of selecting each possible action. If the agent is following policy $\pi$ at time $t$, then $\pi(a|s)$ is the probability that $A_t = a$ if $S_t = s$. Like $p$, $\pi$ is an ordinary function; the “$|$” in the middle of $\pi(a|s)$ merely reminds that it defines a probability distribution over $a \in \mathcal A(s)$ for each $s \in \mathcal {S}$. 
 
 The value function of a state $s$ under a policy $\pi$, denoted $v_\pi(s)$, is the expected return when starting in $s$ and following $\pi$. For MDPs, we can define $v_\pi$ formally by,
-
+{{<keepit>}}
 $$
 v_\pi(s) \doteq \mathbb E_\pi [G_t|S_t = s] = \mathbb E_\pi[\sum_{k = 0} ^\infty \gamma^k R_{t+k+1} | S_t = s], \text{ for all } s \in \mathcal S
 $$
-
+{{</keepit>}}
 where $\mathbb E_\pi[\cdot]$ denotes the expected value of a random variable given that the agent follows policy $\pi$, and $t$ is any time step. Note that the value of the terminal state, if any, is always zero. We call the function $v_\pi$ the state-value function for policy $\pi$.
 
 Similarly, we define the value of taking action $a$ in state $s$ under a policy $\pi$, denoted $q_\pi(s, a)$, as the expected return starting from s, taking the action $a$, and thereafter following policy $\pi$:
@@ -156,7 +156,7 @@ where it is implicit that the actions, $a$, are taken from the set $\mathcal A(s
 
 $\sum_{a} \pi(a|s) \sum_{s',r} p(s', r | s, a) [r + \gamma v_\pi(s')]$ is the Bellman equation for $v_\pi$. It expresses a relationship between the value of a state and the values of its successor states. 
 
-![2.png](posts/Reinforcement-Learning-Finite-Markov-Decision/2.png)
+![2.png](content/posts/Reinforcement-Learning-Finite-Markov-Decision/2.png)
 
 Think of looking ahead from a state to its possible successor states, as suggested by the diagram to the right. Each open circle represents a state and each solid circle represents a state-action pair. Starting from state $s$, the root node at the top, the agent could take any of some set of actions — three are show in the diagram — based on its policy $\pi$. From each of these, the environment could respond with one of several next states, $s'$, along with a reward, $r$, depending on its dynamic given by the function $p$. The Bellman equation averages over all the possibilities, weighting each by its probability of occurring. It states that the value of the start state must equal the value of the expected next state, plus the reward expected along the way.
 
