@@ -156,7 +156,7 @@ where it is implicit that the actions, $a$, are taken from the set $\mathcal A(s
 
 {{<keepit>}}$\sum_{a} \pi(a|s) \sum_{s',r} p(s', r | s, a) [r + \gamma v_\pi(s')]${{</keepit>}} is the Bellman equation for $v_\pi$. It expresses a relationship between the value of a state and the values of its successor states. 
 
-![2.png](content/posts/Reinforcement-Learning-Finite-Markov-Decision/2.png)
+![2.png](/images/2.png)
 
 Think of looking ahead from a state to its possible successor states, as suggested by the diagram to the right. Each open circle represents a state and each solid circle represents a state-action pair. Starting from state $s$, the root node at the top, the agent could take any of some set of actions — three are show in the diagram — based on its policy $\pi$. From each of these, the environment could respond with one of several next states, $s'$, along with a reward, $r$, depending on its dynamic given by the function $p$. The Bellman equation averages over all the possibilities, weighting each by its probability of occurring. It states that the value of the start state must equal the value of the expected next state, plus the reward expected along the way.
 
