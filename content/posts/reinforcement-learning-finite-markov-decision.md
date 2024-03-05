@@ -15,7 +15,7 @@ MDPs are a mathematically idealized form of the reinforcement learning problem f
 
 MDPs are meant to be a straightforward framing of the problem of learning from interaction to achieve a goal. The learner and decision maker is called the agent. The thing it interacts with, comprising everything outside the agent, is called the environment. The agent selecting actions and the environment responding to these actions and presenting new situations to the agent. The environment also gives rise to rewards, special numerical values that the agent seeks to maximize over time through its choice of actions.
 
-![1.png](content/posts/Reinforcement-Learning-Finite-Markov-Decision/1.png)
+![1.png](/images/1.png)
 
 The agent and environment interact at each of a sequence of discrete time steps, $t = 0, 1, 2, 3, ...$ . 
 
@@ -111,11 +111,11 @@ where $\gamma$ is a parameter, $0 \leq \gamma \leq 1$, called the discount rate.
 The discount rate determines the present value of future rewards: A reward received $k$ time steps in the future is worth only $\gamma^{k-1}$ times what it would be worth if it were received immediately. If $\gamma < 1$, the infinite sum in $\sum_{k=0} ^{\infty} \gamma^k R_{t+k+1}$ has a finite value as finite value as long as the reward sequence $\{R_k\}$ is bounded. If $\gamma = 0$, the agent is “myopic” in being concerned only with maximizing immediate rewards: its objective in this case is to learn how to choose $A_t$  so as to maximize only $R_{t+1}$. If each of the agent’s actions happened to influence only the immediate reward, not future rewards as well, then a myopic agent could maximize by separately maximizing each immediate reward.Acting to maximize immediate reward can reduce access to future rewards so that the return is reduced.  As $\gamma$ approaches 1, the return objective takes future rewards into account more strongly; the agent becomes more farsighted.
 
 Returns at successive time steps are related to each other in a way that is important for the theory and algorithms of reinforcement learning:
-
+{{<keepit>}}
 $$
 \begin{aligned} G_t &\doteq R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \gamma^3 R_{t+4} + ... \\ &= R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + \gamma^2 R_{t+4} + ...) \\ &= R_{t+1} + \gamma G_{t+1}\end{aligned}
 $$
-
+{{</keepit>}}
 Note that this works for all time steps $t < T$, event if termination occurs at $t + 1$, if we define $G_T = 0$. This often makes it easy to compute returns from reward sequences.
 
 Note that although the return $\sum_{k=0} ^\infty \gamma^k R_{t+k+1}$ is a sum of an infinite number of terms, it is still finite if the reward is nonzero and constant — if $\gamma < 1$. If the reward is a constant $+1$, then the return is $G_t = \sum_{k = 0} ^{\infty} \gamma^k = \frac {1} {1 - \gamma}$. 
@@ -147,14 +147,14 @@ $$
 where $q_\pi$ is the action-value function for policy $\pi$.
 
 A fundamental property of value functions used throughout reinforcement learning and dynamic programming. This is their relationship, for any policy $\pi$ and any state $s$, the following consistency condition holds between the value of $s$ and the value of its possible successor states:
-
+{{<keepit>}}
 $$
 \begin {aligned} v_{\pi}(s) &\doteq \mathbb E[G_t | S_t = s] \\ &= \mathbb E_{\pi}[R_{t+1} + \gamma G_{t+1} | S_t = s] \\ &=\sum_{a}\pi(a|s) \sum_{s'} \sum_{r} p(s',r|s,a)[r + \gamma \mathbb E[G_{t+1} | S_{t+1} = s']] \\ &=\sum_a \pi(a|s) \sum_{s',r} p(s', r|s, a)[r + \gamma v_{\pi}(s')], \text { for all } s \in \mathcal {S} \end {aligned}
 $$
-
+{{</keepit>}}
 where it is implicit that the actions, $a$, are taken from the set $\mathcal A(s)$, that the next states, $s'$, are taken from the set $\mathcal S$, and that the rewards, $r$, are taken from the set $\mathcal R$.
 
-$\sum_{a} \pi(a|s) \sum_{s',r} p(s', r | s, a) [r + \gamma v_\pi(s')]$ is the Bellman equation for $v_\pi$. It expresses a relationship between the value of a state and the values of its successor states. 
+{{<keepit>}}$\sum_{a} \pi(a|s) \sum_{s',r} p(s', r | s, a) [r + \gamma v_\pi(s')]${{</keepit>}} is the Bellman equation for $v_\pi$. It expresses a relationship between the value of a state and the values of its successor states. 
 
 ![2.png](content/posts/Reinforcement-Learning-Finite-Markov-Decision/2.png)
 
@@ -179,11 +179,11 @@ q_*(s, a) \doteq \max_{\pi} q_{\pi}(s, a), \text{ for all } s \in \mathcal S \te
 $$
 
 For the state-action pair $(s, a)$, this function gives the expected return for taking action $a$ in state $s$ and thereafter following an optimal policy. Thus, we can write $q_*$ in term of $v_*$ as follows:
-
+{{<keepit>}}
 $$
 q_*(s, a) = \mathbb E[R_{t+1} + \gamma v_*(S_{t+1}) | S_t = s, A_t = a]
 $$
-
+{{</keepit>}}
 # Optimality and Approximation
 
 An agent learns an optimal policy has done very well, but in practice this rarely happens. For the kinds of tasks in which we are interested, optimal policies can be generated only with extreme computational cost. 
