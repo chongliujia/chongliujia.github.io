@@ -4,11 +4,7 @@ layout: about
 date: 2024-1-13T21:46:33
 draft: false
 ---
-Hi 👋
 
-My name is Chongliu Jia. I am a first-year PhD student in Computer Engineering at Iowa State University. My research interests include Machine Learning, Reinforcement Learning.
+你好，
 
-
-I enjoy photography, gaming, hiking, and of course, programming in my spare time. 
-
-My email is chongliujia@gmail.com. If you have any questions, feel free to contact me! 
+我是一名AI工程师，这个博客主要是记录一些总结或者一些技术文章。
