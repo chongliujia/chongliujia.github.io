@@ -8,7 +8,8 @@ enableInlineShortcodes: true
 enableEmoji: true 
 enableRobotsTXT: true 
 
-paginate: 15
+pagination:
+  pagerSize: 15
 
 math: true
 markup:
