@@ -752,4 +752,3 @@ python scripts/knowledge_base_cli.py create-kb research_papers --strategy semant
 
 这个异步架构为RAG系统提供了高性能、高可靠性、高智能化的基础设施，支持大规模文档处理和实时查询响应。
 
-具体实现：https://github.com/chongliujia/base_agent_engineering 
