@@ -708,4 +708,4 @@ func registerTools(handler *mcp.BaseHandler) error {
 
 本文提供的架构设计和实现方案已在生产环境中验证，可以作为构建企业级 MCP 服务的参考模板。完整的源代码和详细文档可以在项目仓库中找到。
 
-项目仓库地址：https://github.com/chongliujia/mcp-go-template
+[项目仓库地址](https://github.com/chongliujia/mcp-go-template)
