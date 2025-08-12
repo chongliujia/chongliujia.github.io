@@ -24,7 +24,7 @@ MCP（Model Context Protocol）是一个开放标准，旨在为 AI 应用提供
 
 在开发前，我的整体MCP服务架构是采取分层，确保模块化，可扩展性和可维护性，以下是我的整体系统架构图：
 
-![mcp整体架构图.png](images/基于Go语言开发MCP服务/mcp整体架构图.png)
+![mcp整体架构图.png](/images/基于Go语言开发MCP服务/mcp整体架构图.png)
 
 ---
 ### 核心组件：
@@ -85,7 +85,7 @@ func main() {
 
 ##### 架构
 
-![http服务架构.png](images/基于Go语言开发MCP服务/http服务架构.png)
+![http服务架构.png](/images/基于Go语言开发MCP服务/http服务架构.png)
 
 **关键函数说明：**
 
@@ -176,7 +176,7 @@ func (s *Server) handleConnection(conn *websocket.Conn) {
 
 ### 消息处理流程
 
-![mcp消息处理流程.png](images/基于Go语言开发MCP服务/mcp消息处理流程.png)
+![mcp消息处理流程.png](/images/基于Go语言开发MCP服务/mcp消息处理流程.png)
 
 ### MCP处理器
 
